@@ -1,1 +1,10 @@
-// Some script will goes here
+// array for saving book data
+let myLibrary = [];
+
+function Book() {
+  // the constructor
+}
+
+function addBookToLibrary() {
+  // do stuff here
+}
