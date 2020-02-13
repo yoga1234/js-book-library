@@ -52,3 +52,5 @@ function cardElement(data) {
   </div> <!-- card -->
   `
 }
+
+render()
