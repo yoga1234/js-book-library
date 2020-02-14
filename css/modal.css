@@ -3,6 +3,7 @@
   display: none; /* hidden by default */
   position: fixed; /* stay in place */
   z-index: 1; /* sit on top */
+  padding-top: 100px;
   left: 0;
   top: 0;
   width: 100%; /* full width */
@@ -12,18 +13,53 @@
   background-color: rgba(0, 0, 0, 0.4); /* black with opacity */
 }
 
+/* modal header */
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+/* modal body */
+.modal-body {
+  padding: 2px 16px;
+}
+
+/* modal footer */
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
 /* modal content */
 .modal-content {
+  position: relative;
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
+  margin: auto;
+  padding: 0;
   border: 1px solid #888;
   width: 80%; /* could be more or less, depending on the screen size */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+/* add animation */
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }
 
 /* the close button */
 .close {
-  color: #aaa;
+  color: #fff;
   float: right;
   font-size: 28px;
   font-weight: bold;
