@@ -16,20 +16,17 @@
 /* modal header */
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  margin-bottom: 10px;
+  background-color: #256e7d;
   color: white;
+  border-radius: 10px 10px 0 0;
+  text-transform: uppercase;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
 }
 
 /* modal body */
 .modal-body {
-  padding: 2px 16px;
-}
-
-/* modal footer */
-.modal-footer {
-  padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+  padding: 2px 16px 20px 16px;
 }
 
 /* modal content */
@@ -38,8 +35,8 @@
   background-color: #fefefe;
   margin: auto;
   padding: 0;
-  border: 1px solid #888;
-  width: 80%; /* could be more or less, depending on the screen size */
+  border-radius: 10px;
+  width: 50%; /* could be more or less, depending on the screen size */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation-name: animatetop;
   animation-duration: 0.4s;
@@ -61,7 +58,7 @@
 .close {
   color: #fff;
   float: right;
-  font-size: 28px;
+  font-size: 38px;
   font-weight: bold;
 }
 .close:hover,
@@ -69,4 +66,71 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* form label related */
+.form-label {
+  font-size: 20px;
+  font-family: Overpass, Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+}
+.form-input {
+  width: 80%;
+  height: 25px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  outline: none;
+  font-family: Overpass;
+}
+.form-dropdown {
+  width: 150px;
+  height: 30px;
+  font-family: Overpass, Arial, Helvetica, sans-serif;
+}
+.submit-button {
+  width: 80px;
+  text-transform: uppercase;
+  padding: 10px;
+  margin-right: 15px;
+  color: #fff;
+  font-family: Overpass, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background: #44b0e4;
+  outline: none;
+  border:0;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 4px 10px -4px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 4px 10px -4px rgba(0,0,0,0.5);
+  box-shadow: 0px 4px 10px -4px rgba(0,0,0,0.5);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.submit-button:hover {
+  -webkit-box-shadow: 0px 6px 15px -8px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 6px 15px -8px rgba(0,0,0,1);
+  box-shadow: 0px 8px 15px -8px rgba(0,0,0,1);
+}
+.cancel-button {
+  width: 80px;
+  padding: 10px;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: Overpass, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background: #ca6573;
+  outline: none;
+  border:0;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 4px 10px -4px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 4px 10px -4px rgba(0,0,0,0.5);
+  box-shadow: 0px 4px 10px -4px rgba(0,0,0,0.5);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.cancel-button:hover {
+  -webkit-box-shadow: 0px 6px 15px -8px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 6px 15px -8px rgba(0,0,0,1);
+  box-shadow: 0px 8px 15px -8px rgba(0,0,0,1);
 }

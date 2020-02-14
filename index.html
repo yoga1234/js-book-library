@@ -44,15 +44,26 @@
     <div class="modal-content">
       <div class="modal-header">
         <span class="close">&times;</span>
-        <h2>Modal Header</h2>
+        <h2>Add new book</h2>
       </div> <!-- modal-header -->
       <div class="modal-body">
-        <p>Some modal text here</p>
-        <p>Other text will goes here!</p>
+        <form>
+          <label for="booktitle" class="form-label">Title:</label> <br>
+          <input type="text" name="booktitle" id="booktitle" class="form-input"> <br> <!-- book title -->
+          <label for="bookauthor" class="form-label">Author:</label> <br>
+          <input type="text" name="bookauthor" id="bookauthor" class="form-input"> <br> <!-- book author -->
+          <label for="bookpages" class="form-label">Pages:</label> <br>
+          <input type="number" name="bookpages" id="bookpages" class="form-input"> <br> <!-- book pages-->
+          <label for="hasbeenread" class="form-label">Has been read:</label> <br>
+          <select id="hasbeenread" class="form-dropdown"> <br> <!-- book has been read -->
+            <option value="read">Read</option>
+            <option value="unread">Unread</option>
+          </select> <br>
+          <hr>
+          <input type="submit" value="submit" class="submit-button">
+          <button class="cancel-button">Cancel</button>
+        </form>
       </div> <!-- modal body -->
-      <div class="modal-footer">
-        <h3>Modal footer</h3>
-      </div> <!-- modal footer -->
     </div> <!-- modal content -->
 
   </div> <!-- id modal form -->
