@@ -1,0 +1,26 @@
+// get the modal
+let modal = document.getElementById("modal-form")
+
+// get the button that opens the modal
+let btn = document.getElementById("modal-button")
+
+// get the <span> element that closes the modal
+let span = document.querySelector(".close")
+
+// when the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block"
+}
+
+// when the user clicks on the close button, close the modal
+span.onclick = function() {
+  modal.style.display = "none"
+}
+
+// when user click outside the modal, close it
+window.onclick = function(event) {
+  console.log(event.target)
+  if(event.target == modal) {
+    modal.style.display = "none"
+  }
+}
