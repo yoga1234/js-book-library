@@ -85,9 +85,12 @@
   font-family: Overpass;
 }
 .form-dropdown {
+  padding: 3px;
   width: 150px;
   height: 30px;
   font-family: Overpass, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
 }
 .submit-button {
   width: 80px;
