@@ -29,9 +29,13 @@ function Book(bookId,title, author, pages, hasBeenRead) {
 }
 
 function addBookToLibrary(e) {
-  // preventing browser to reload
-  e.preventDefault()
-  console.log(e)
+  e.preventDefault() // preventing browser to reload
+
+  let bookTitle = e.target[0].value // getting book title
+  let bookAuthor = e.target[1].value // getting book author
+  let bookPages = e.target[2].value // getting book pages
+  let hasBeenRead = e.target[3].value // getting has been read
+
 }
 
 // render array to HTML
