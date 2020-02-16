@@ -20,12 +20,19 @@ let myLibrary = [
   }
 ];
 
-function Book(bookId,title, author, pages, hasBeenRead) {
-  this.bookId = bookId
+function Book(title, author, pages, hasBeenRead) {
+  this.bookId = myLibrary.length
   this.title = title
   this.author = author
   this.pages = pages
   this.hasBeenRead = hasBeenRead
+}
+Book.prototype.saveBook = function() {
+  console.log(this.bookId)
+  console.log(this.title)
+  console.log(this.author)
+  console.log(this.pages)
+  console.log(this.hasBeenRead)
 }
 
 function addBookToLibrary(e) {
@@ -35,6 +42,10 @@ function addBookToLibrary(e) {
   let bookAuthor = e.target[1].value // getting book author
   let bookPages = e.target[2].value // getting book pages
   let hasBeenRead = e.target[3].value // getting has been read
+
+  let insertBook = new Book(bookTitle, bookAuthor, bookPages, hasBeenRead)
+
+  insertBook.saveBook()
 
 }
 
