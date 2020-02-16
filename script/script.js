@@ -1,26 +1,37 @@
+// getting form DOM
+let formBookSubmit = document.getElementById('new-book-form');
+
 // card-container
 let cardContainer = document.querySelector('.card-container');
 
 // array for saving book data
 let myLibrary = [
   {
+    bookId: 0,
     author: "Yogasmara",
     title: "The Dark Project",
     pages: 2556
   },
   {
+    bookId: 1,
     author: "Hisako Arata",
     title: "Good Plates",
     pages: 299
   }
 ];
 
-function Book() {
-  // the constructor
+function Book(bookId,title, author, pages, hasBeenRead) {
+  this.bookId = bookId
+  this.title = title
+  this.author = author
+  this.pages = pages
+  this.hasBeenRead = hasBeenRead
 }
 
-function addBookToLibrary() {
-  // do stuff here
+function addBookToLibrary(e) {
+  // preventing browser to reload
+  e.preventDefault()
+  console.log(e)
 }
 
 // render array to HTML
@@ -54,3 +65,6 @@ function cardElement(data) {
 }
 
 render()
+
+// getting form submit
+formBookSubmit.addEventListener('submit', addBookToLibrary)
