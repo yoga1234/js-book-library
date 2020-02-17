@@ -55,6 +55,9 @@ function addBookToLibrary(e) {
 
 // render array to HTML
 function render() {
+  // remove card before adding new one
+  cardContainer.innerHTML = ''
+  
   myLibrary.forEach(function(currentValue, index) {
     cardContainer.innerHTML += cardElement(currentValue)
   })
