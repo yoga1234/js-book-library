@@ -5,20 +5,7 @@ let formBookSubmit = document.getElementById('new-book-form');
 let cardContainer = document.querySelector('.card-container');
 
 // array for saving book data
-let myLibrary = [
-  {
-    bookId: 0,
-    author: "Yogasmara",
-    title: "The Dark Project",
-    pages: 2556
-  },
-  {
-    bookId: 1,
-    author: "Hisako Arata",
-    title: "Good Plates",
-    pages: 299
-  }
-];
+let myLibrary = []
 
 function Book(title, author, pages, hasBeenRead) {
   this.bookId = myLibrary.length
@@ -28,11 +15,18 @@ function Book(title, author, pages, hasBeenRead) {
   this.hasBeenRead = hasBeenRead
 }
 Book.prototype.saveBook = function() {
-  console.log(this.bookId)
-  console.log(this.title)
-  console.log(this.author)
-  console.log(this.pages)
-  console.log(this.hasBeenRead)
+  // arrange the object to push
+  let bookToSave = {
+    bookId: this.bookId,
+    title: this.title,
+    author: this.author,
+    pages: this.pages,
+    hasBeenRead: this.hasBeenRead
+  }
+
+  myLibrary.unshift(bookToSave)
+
+  render()
 }
 
 function addBookToLibrary(e) {
@@ -42,11 +36,14 @@ function addBookToLibrary(e) {
   let bookAuthor = e.target[1].value // getting book author
   let bookPages = e.target[2].value // getting book pages
   let hasBeenRead = e.target[3].value // getting has been read
+  console.log(e)
 
   let insertBook = new Book(bookTitle, bookAuthor, bookPages, hasBeenRead)
 
   insertBook.saveBook()
 
+  // close the modal after insert the book
+  modal.style.display = "none"
 }
 
 // render array to HTML
