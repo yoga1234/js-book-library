@@ -1,11 +1,6 @@
-// getting the form input
-let formInput = document.querySelectorAll('.form-input')
-
-// getting form DOM
-let formBookSubmit = document.getElementById('new-book-form')
-
-// card-container
-let cardContainer = document.querySelector('.card-container')
+let formInput = document.querySelectorAll('.form-input') // getting the form input
+let formBookSubmit = document.getElementById('new-book-form') // getting the DOM
+let cardContainer = document.querySelector('.card-container') // getting the card container
 
 // array for saving book data
 let myLibrary = []
@@ -51,16 +46,21 @@ function addBookToLibrary(e) {
   formInput.forEach(function(item, index){
     item.value = ''
   })
+
+  let deleteButton = document.querySelectorAll('.delete-button') // getting the delete button
+  deleteButton.forEach(key => key.addEventListener('click', deleteFunc))
 }
 
 // render array to HTML
 function render() {
   // remove card before adding new one
   cardContainer.innerHTML = ''
-  
+
   myLibrary.forEach(function(currentValue, index) {
     cardContainer.innerHTML += cardElement(currentValue)
   })
+
+  
 }
 
 // card element
@@ -80,13 +80,18 @@ function cardElement(data) {
     </div> <!-- card-top -->
     <div class="card-bottom">
       <button class="read-button"><b>read</b></button>
-      <button class="delete-button"><b>delete</b></button>
+      <button class="delete-button" data-book-id="${data.bookId}${data.pages}"><b>delete</b></button>
     </div> <!-- card-bottom -->
   </div> <!-- card -->
   `
 }
 
+// function for deleting the book data
+function deleteFunc(e){
+  console.log(e.target.dataset.bookId)
+}
+
 render()
 
-// getting form submit
+// form submit eventListener
 formBookSubmit.addEventListener('submit', addBookToLibrary)
