@@ -80,7 +80,7 @@ function cardElement(data) {
     </div> <!-- card-top -->
     <div class="card-bottom">
       <button class="read-button"><b>read</b></button>
-      <button class="delete-button" data-book-id="${data.bookId}${data.pages}"><b>delete</b></button>
+      <button class="delete-button" data-book="${data.bookId}${data.pages}">delete</button>
     </div> <!-- card-bottom -->
   </div> <!-- card -->
   `
@@ -88,7 +88,7 @@ function cardElement(data) {
 
 // function for deleting the book data
 function deleteFunc(e){
-  console.log(e.target.dataset.bookId)
+  console.log(e.target.dataset.book)
 }
 
 render()
