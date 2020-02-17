@@ -69,6 +69,9 @@ body {
   text-transform: uppercase;
   color: #fff;
 }
+.total-books {
+  text-align: center;
+}
 
 /* new book button related */
 .new-book {

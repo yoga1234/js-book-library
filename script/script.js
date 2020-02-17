@@ -1,6 +1,7 @@
 let formInput = document.querySelectorAll('.form-input') // getting the form input
 let formBookSubmit = document.getElementById('new-book-form') // getting the DOM
 let cardContainer = document.querySelector('.card-container') // getting the card container
+let totalBooks = document.querySelector('.total-books') // getting total books DOM
 
 // array for saving book data
 let myLibrary = []
@@ -24,7 +25,7 @@ Book.prototype.saveBook = function() {
 
   myLibrary.unshift(bookToSave)
 
-  render()
+  render() // rendering list of book
 }
 
 function addBookToLibrary(e) {
@@ -60,7 +61,13 @@ function render() {
     cardContainer.innerHTML += cardElement(currentValue)
   })
 
-  
+  // rendering total books
+  renderBooks()
+}
+
+// rendering total of the book
+function renderBooks(){
+  totalBooks.innerHTML = myLibrary.length
 }
 
 // card element
@@ -88,8 +95,12 @@ function cardElement(data) {
 
 // function for deleting the book data
 function deleteFunc(e){
+  
   console.log(e.target.dataset.book)
+
 }
+
+
 
 render()
 
