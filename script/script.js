@@ -1,8 +1,11 @@
+// getting the form input
+let formInput = document.querySelectorAll('.form-input')
+
 // getting form DOM
-let formBookSubmit = document.getElementById('new-book-form');
+let formBookSubmit = document.getElementById('new-book-form')
 
 // card-container
-let cardContainer = document.querySelector('.card-container');
+let cardContainer = document.querySelector('.card-container')
 
 // array for saving book data
 let myLibrary = []
@@ -36,7 +39,6 @@ function addBookToLibrary(e) {
   let bookAuthor = e.target[1].value // getting book author
   let bookPages = e.target[2].value // getting book pages
   let hasBeenRead = e.target[3].value // getting has been read
-  console.log(e)
 
   let insertBook = new Book(bookTitle, bookAuthor, bookPages, hasBeenRead)
 
@@ -44,6 +46,11 @@ function addBookToLibrary(e) {
 
   // close the modal after insert the book
   modal.style.display = "none"
+
+  // clear the form after submit
+  formInput.forEach(function(item, index){
+    item.value = ''
+  })
 }
 
 // render array to HTML
@@ -60,7 +67,7 @@ function cardElement(data) {
     <div class="card-top">
       <div class="content">
         <div class="left-side">
-          <p>read</p>
+          <p>${data.hasBeenRead}</p>
         </div> <!-- left-side -->
         <div class="right-side">
           <p class="title"><b>${data.title}</b></p>
