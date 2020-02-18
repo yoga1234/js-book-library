@@ -2,9 +2,9 @@ let formInput = document.querySelectorAll('.form-input') // getting the form inp
 let formBookSubmit = document.getElementById('new-book-form') // getting the DOM
 let cardContainer = document.querySelector('.card-container') // getting the card container
 let totalBooks = document.querySelector('.total-books') // getting total books DOM
+let newBookContainer = document.querySelector('.card') // getting the card container, used for event bubling for delete and read
 
-// array for saving book data
-let myLibrary = []
+let myLibrary = [] // array for saving book data
 
 function Book(title, author, pages, hasBeenRead) {
   this.bookId = myLibrary.length
@@ -12,20 +12,6 @@ function Book(title, author, pages, hasBeenRead) {
   this.author = author
   this.pages = pages
   this.hasBeenRead = hasBeenRead
-}
-Book.prototype.saveBook = function() {
-  // arrange the object to push
-  let bookToSave = {
-    bookId: this.bookId,
-    title: this.title,
-    author: this.author,
-    pages: this.pages,
-    hasBeenRead: this.hasBeenRead
-  }
-
-  myLibrary.unshift(bookToSave)
-
-  render() // rendering list of book
 }
 
 function addBookToLibrary(e) {
@@ -38,7 +24,8 @@ function addBookToLibrary(e) {
 
   let insertBook = new Book(bookTitle, bookAuthor, bookPages, hasBeenRead)
 
-  insertBook.saveBook()
+  // saving the book
+  myLibrary.push(insertBook)
 
   // close the modal after insert the book
   modal.style.display = "none"
@@ -48,8 +35,7 @@ function addBookToLibrary(e) {
     item.value = ''
   })
 
-  let deleteButton = document.querySelectorAll('.delete-button') // getting the delete button
-  deleteButton.forEach(key => key.addEventListener('click', deleteFunc))
+  render()
 }
 
 // render array to HTML
@@ -62,11 +48,6 @@ function render() {
   })
 
   // rendering total books
-  renderBooks()
-}
-
-// rendering total of the book
-function renderBooks(){
   totalBooks.innerHTML = myLibrary.length
 }
 
@@ -86,8 +67,8 @@ function cardElement(data) {
       </div>
     </div> <!-- card-top -->
     <div class="card-bottom">
-      <button class="read-button"><b>read</b></button>
-      <button class="delete-button" data-book="${data.bookId}${data.pages}">delete</button>
+      <button class="read-button">read</button>
+      <button class="delete-button" data-book="book${data.bookId}">delete</button>
     </div> <!-- card-bottom -->
   </div> <!-- card -->
   `
@@ -95,14 +76,31 @@ function cardElement(data) {
 
 // function for deleting the book data
 function deleteFunc(e){
-  
-  console.log(e.target.dataset.book)
-
+  // overwrite myLibrary with new array and then re-render the list
+  myLibrary = myLibrary.filter(function(data){
+    console.log(data.bookId)
+    console.log(e.target.dataset.book)
+    return data.bookId != e.target.dataset.book.replace('book','')
+  })
+  render()
 }
 
+// function for read/unread the book data
+function readFunc(){
+  console.log('reading')
+}
 
-
-render()
+render() // rendering the list to the dom
 
 // form submit eventListener
 formBookSubmit.addEventListener('submit', addBookToLibrary)
+
+document.addEventListener('click', function(e){
+  if(e.target.classList.contains('delete-button')){
+    deleteFunc(e)
+  } else if(e.target.classList.contains('read-button')){
+    readFunc()
+  } else {
+    console.log('you click on something else')
+  }
+})
