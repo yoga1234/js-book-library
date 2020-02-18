@@ -6,7 +6,7 @@ let totalBooks = document.querySelector('.total-books') // getting total books D
 let myLibrary = [] // array for saving book data
 
 function Book(title, author, pages, hasBeenRead) {
-  this.bookId = myLibrary.length
+  this.bookId = myLibrary.length + pages
   this.title = title
   this.author = author
   this.pages = pages
