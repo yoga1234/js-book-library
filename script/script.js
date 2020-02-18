@@ -85,13 +85,22 @@ function deleteFunc(e){
 // function for read/unread the book data
 function readFunc(e){
   let readText = document.querySelector(`[data-is-read="${e.target.dataset.read}"]`) // getting the read text
-
+  // console.log(readText.getAttribute('data-is-read'))
+  
   // check if the book has been read/unread
-  if(readText.innerHTML == 'read') {
-    readText.innerHTML = 'unread'
+  // get the data based on id
+  let dataForChange = myLibrary.find(function(data) {
+    return data.bookId == readText.getAttribute('data-is-read').replace('read','')
+  })
+  // toggle the has been read data
+  if(dataForChange['hasBeenRead'] == 'read'){
+    dataForChange['hasBeenRead'] = 'unread'
+    render()
   } else {
-    readText.innerHTML = 'read'
+    dataForChange['hasBeenRead'] = 'read'
+    render()
   }
+  
 }
 
 render() // rendering the list to the dom
