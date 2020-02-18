@@ -2,7 +2,6 @@ let formInput = document.querySelectorAll('.form-input') // getting the form inp
 let formBookSubmit = document.getElementById('new-book-form') // getting the DOM
 let cardContainer = document.querySelector('.card-container') // getting the card container
 let totalBooks = document.querySelector('.total-books') // getting total books DOM
-let newBookContainer = document.querySelector('.card') // getting the card container, used for event bubling for delete and read
 
 let myLibrary = [] // array for saving book data
 
@@ -58,7 +57,7 @@ function cardElement(data) {
     <div class="card-top">
       <div class="content">
         <div class="left-side">
-          <p>${data.hasBeenRead}</p>
+          <p class="has-been-read" data-is-read="read${data.bookId}">${data.hasBeenRead}</p>
         </div> <!-- left-side -->
         <div class="right-side">
           <p class="title"><b>${data.title}</b></p>
@@ -67,7 +66,7 @@ function cardElement(data) {
       </div>
     </div> <!-- card-top -->
     <div class="card-bottom">
-      <button class="read-button">read</button>
+      <button class="read-button" data-read="read${data.bookId}">read</button>
       <button class="delete-button" data-book="book${data.bookId}">delete</button>
     </div> <!-- card-bottom -->
   </div> <!-- card -->
@@ -78,16 +77,21 @@ function cardElement(data) {
 function deleteFunc(e){
   // overwrite myLibrary with new array and then re-render the list
   myLibrary = myLibrary.filter(function(data){
-    console.log(data.bookId)
-    console.log(e.target.dataset.book)
     return data.bookId != e.target.dataset.book.replace('book','')
   })
   render()
 }
 
 // function for read/unread the book data
-function readFunc(){
-  console.log('reading')
+function readFunc(e){
+  let readText = document.querySelector(`[data-is-read="${e.target.dataset.read}"]`) // getting the read text
+
+  // check if the book has been read/unread
+  if(readText.innerHTML == 'read') {
+    readText.innerHTML = 'unread'
+  } else {
+    readText.innerHTML = 'read'
+  }
 }
 
 render() // rendering the list to the dom
@@ -99,8 +103,6 @@ document.addEventListener('click', function(e){
   if(e.target.classList.contains('delete-button')){
     deleteFunc(e)
   } else if(e.target.classList.contains('read-button')){
-    readFunc()
-  } else {
-    console.log('you click on something else')
+    readFunc(e)
   }
 })
